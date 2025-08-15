@@ -1,4 +1,6 @@
 import Image from "next/image";
+import heroImg from "@/../public/hero-img.png"
+import Link from "next/link";
 
 export default function Home() {
   return(
@@ -15,16 +17,16 @@ export default function Home() {
             Join our community of creators and explore a vast library of user-submitted models.
           </p>
           <div className="flex gap-4">
-            <a 
-              href="/3d-models"
+            <Link 
+              href="/products"
               className="px-6 py-3 text-black transition duration-100 bg-white border-2 border-black hover:bg-black hover:text-white"
             >
               Browse Models
-            </a>
+            </Link>
           </div>
         </div>
         <Image 
-          src="/hero-img.png"
+          src={heroImg.src}
           alt="" 
           width={350}
           height={350}
