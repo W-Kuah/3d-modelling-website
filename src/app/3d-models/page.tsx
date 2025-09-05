@@ -24,7 +24,7 @@ export default async function ModelsPage({searchParams}: ModelPageProps) {
           placeholder="E.g. tool"
           autoComplete="off"
           defaultValue={query}
-          className="w-full py-3 pr-5 text-sm placeholder-gray-500 bg-white border border-[#606060] rounded-full focus:border-[#606060] focus:outline-none"
+          className="w-full py-3 pl-5 pr-5 text-sm placeholder-gray-500 bg-white border border-[#606060] rounded-full focus:border-[#606060] focus:outline-none"
         />
       </Form>
       <ModelsGrid title="3D Models" models={filteredModels} />

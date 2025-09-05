@@ -29,11 +29,11 @@ export type RootLayoutProps = Readonly<{
     children: React.ReactNode,
 }>
 
-export type ModelPageProps = Readonly<{
-    searchParams: {
+export type ModelPageProps ={
+    searchParams: Promise<{
       query?: string
-    }
-}>
+    }>
+}
 
 export type ModelDetailPageProps = Readonly<{
     params: Promise<{
