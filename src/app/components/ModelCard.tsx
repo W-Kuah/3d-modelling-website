@@ -4,13 +4,13 @@ import { ModelCardProps } from "../types";
 import placeholderImg from "@/../public/placeholder.png";
 import Pill from "./Pill";
 
-    import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-    import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function ModelCard({ model }: ModelCardProps) {
   return (
         <Link
-            href={` /3d-models/${model.id}`}
+            href={`/3d-models/${model.id}`}
             className="block group hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-[3px] transition-all"
             aria-labelledby={`model-${model.id}-title`}
         >
@@ -21,6 +21,7 @@ export default function ModelCard({ model }: ModelCardProps) {
                         alt={model.name}
                         width={300}
                         height={300}
+                        className="absolute inset-0 object-cover w-full h-full"
                     />
                 </div>
                 <div className="p-4">

@@ -1,26 +1,33 @@
-import {getAllModels} from '@/app/lib/models';
-import type {Model} from '@/app/types';
-import ModelCard from '../components/ModelCard';
+import {getModels} from '@/app/lib/models';
+import ModelsGrid from '@/app/components/ModelsGrid';
+import { ModelPageProps } from '../types';
 
-export default async function ModelsPage() {
+export default async function ModelsPage({searchParams}: ModelPageProps) {
 
-  const models = await getAllModels();
+  const models = await getModels();
+  const query = (await searchParams)?.query?.toLowerCase() || "";
+  
+  const filteredModels = query
+    ? models.filter(model => 
+      model.name.toLowerCase().includes(query) ||
+      model.description.toLowerCase().includes(query)
+    )
+    : models;
   return (
-    <div className="container px-4 py-8 mx-auto">
-      <h1 className="mb-8 text-3xl font-bold">All Models</h1>
-      <div
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        role="region"
-        aria-label="3D Models Gallery"
-      >
-        {models.map((model: Model) => (
-          <ModelCard
-            key={model.id}
-            model={model}
-          />
-        ))}
-      </div>
-    </div>
-    
-)
+    <>
+      <form className="w-full px-5 md:px-0 md:max-w-xl">
+        <label htmlFor="search-3d-models" className="sr-only">Search 3D Models</label>
+        <input 
+          type="text"
+          name="query"
+          placeholder="E.g. tool"
+          autoComplete="off"
+          defaultValue={query}
+          className="w-full py-3 pr-5 text-sm placeholder-gray-500 bg-white border border-[#606060] rounded-full focus:border-[#606060] focus:outline-none"
+        />
+      </form>
+      <ModelsGrid title="3D Models" models={filteredModels} />
+    </>
+  );
 }
+ 
